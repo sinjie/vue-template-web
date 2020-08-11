@@ -1,0 +1,63 @@
+// 基本色
+$--color-black: #000000;
+$--color-white: #FFFFFF;
+$--color-primary: #409EFF;
+$--color-success: #67C23A;
+$--color-warning: #E6A23C;
+$--color-danger: #F56C6C;
+$--color-info: #909399;
+
+// 主题色
+$themes: (
+  light: (
+    bg_color_max: #f0f1f4,
+    bg_color_base: #C0C4CC,
+    
+    font_color_max: #000104,
+    font_color_base: #303133,
+  ),
+  dark: (    
+    bg_color_max: #000104,
+    bg_color_base: #303133,
+    
+    font_color_max: #f0f1f4,
+    font_color_base: #C0C4CC,
+  )
+);
+
+// 遍历主题map
+@mixin themeify {
+  @each $theme-name, $theme-map in $themes {
+    // 将map 提升为全局变量
+    $theme-map: $theme-map !global;
+    // 根据html标签的data-theme属性判断当前使用的theme-name
+    // #{} 是sass的插值方法；  & 是sass嵌套里父容器的标识；  @content 是混合器插槽(类似slot)
+    [data-theme="#{$theme-name}"] & {
+      @content;
+    }
+  }
+};
+
+// 声明一个方法，获取key对应的颜色
+@function themed($key) {
+  @return map-get($theme-map, $key)
+};
+
+// 获取背景色
+@mixin bg_color($color) {
+  @include themeify() {
+    background-color: themed($color) !important;
+  }
+};
+// 获取字体颜色
+@mixin f_color($color) {
+  @include themeify() {
+    color: themed($color) !important;
+  }
+};
+// 获取边框颜色
+@mixin bor_color($color) {
+  @include themeify() {
+    border-color: themed($color) !important;
+  }
+};

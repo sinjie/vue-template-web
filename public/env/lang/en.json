@@ -1,0 +1,22 @@
+{
+  "common": {
+    "errorMsg": "error",
+    "dark": "Dark",
+    "light": "Light",
+    "zh": "Chinese",
+    "en": "English",
+    "login": "login",
+    "registered": "registered"
+  },
+  "nav": {
+    "home": "Home",
+    "dataList": "Data List"
+  },
+  "user": {
+    "info": "User Info",
+    "account": "User Account",
+    "massage": "Message Info",
+    "logout": "Logout",
+    "userInfo": "User"
+  }
+}

@@ -1,0 +1,15 @@
+/**
+* element-ui 样式覆盖
+* 页面样式覆盖加上当前页面-组件的父级选择器 以免造成样式污染 例：  .login-page .el-button {}
+* 通用样式覆盖加上通用组件类名 例： .x-table.el-table {}
+*/
+
+.login-page .content__form-content .el-input-group__append {
+  padding: 0 30px;
+  background-color: #fff;
+  color: $--color-primary;
+}
+
+.login-page .content__form-content .footer-line .el-button{
+  color: #999;
+}
